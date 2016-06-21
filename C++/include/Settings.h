@@ -146,6 +146,7 @@ constexpr const char* R_START_PRINT_ANGLE    = "RStartPrintPositionMillidegrees"
 
 constexpr const char* HOME_ON_APPROACH       = "RotateHomeOnApproach";
 constexpr const char* USE_PATTERN_MODE       = "UsePatternMode";
+constexpr const char* ERROR_REMOVAL_Z_LIFT   = "ErrorRemovalZLiftMicrons";
 
 // The class that handles configuration and print options
 class Settings 

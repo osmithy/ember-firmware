@@ -214,6 +214,18 @@ bool Motor::GoToStartPosition()
     commands.push_back(MotorCommand(MC_Z_ACTION_REG, MC_MOVE, 
                                     _settings.GetInt(Z_START_PRINT_POSITION)));
     
+    int errorRemovalZLift = _settings.GetInt(ERROR_REMOVAL_Z_LIFT);
+    if(errorRemovalZLift != 0)
+    {
+        // move up and back down, to remove error in Z drive positioning
+        commands.push_back(MotorCommand(MC_Z_ACTION_REG, MC_MOVE, 
+                                        errorRemovalZLift));
+
+        commands.push_back(MotorCommand(MC_Z_ACTION_REG, MC_MOVE, 
+                                        _settings.GetInt(LAYER_THICKNESS) - 
+                                        errorRemovalZLift));
+    }
+    
     // request an interrupt when these commands are completed
     commands.push_back(MotorCommand(MC_GENERAL_REG, MC_INTERRUPT));
     

@@ -112,6 +112,7 @@ _errorHandler(NULL)
             
             "\"" << HOME_ON_APPROACH       << "\": 0," <<
             "\"" << USE_PATTERN_MODE       << "\": 0," <<
+            "\"" << ERROR_REMOVAL_Z_LIFT   << "\": 3000," <<
             
             "\"" << FL_SEPARATION_R_JERK   << "\": 100000," <<
             "\"" << FL_SEPARATION_R_SPEED  << "\": 6," <<
