@@ -1,0 +1,32 @@
+<div class="content" id="settings">
+<h3>Edit Config</h3>
+  <p>
+    To change a setting, type a value into the input box and press Enter. Only one setting can be changed at a time (press Enter after each one).
+  </p>
+  <p>
+    Hover your cursor over a setting to display information about it. Settings that start with "First", "BurnIn", and "Model" apply to the first layer, burn-in layers, and model layers respectively.
+  </p>
+<!-- use if you need to know the working directory
+  <p>
+    Current directory is: <%= @workingdir%>
+  </p>
+-->
+    <script>
+    var tooltips = '<%= @tooltips%>';
+    var tooltip = JSON.parse(tooltips);
+
+     var all_settings = '<%= @all_settings%>';
+     var obj = JSON.parse(all_settings);
+
+     for (var key in obj) {
+         console.log(key)
+         if (obj.hasOwnProperty(key)) {
+             var sweetElement = document.createElement('form');
+             sweetElement.setAttribute('action',"/edit/change_value");
+             sweetElement.setAttribute('title',key + ': ' + tooltip[key]);
+             sweetElement.innerHTML = "<input type=hidden name=setting value=" + key + "> <input type=text step=0.01 name=value value=" + obj[key] + "> " + key + "</form>";
+             document.getElementById("settings").appendChild(sweetElement);
+         }
+     }
+    </script>
+</div>

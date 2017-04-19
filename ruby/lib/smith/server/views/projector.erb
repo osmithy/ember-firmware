@@ -1,0 +1,20 @@
+<div class="content" id="settings">
+      <script>
+       var all_settings = '<%= @all_settings%>';
+       var obj = JSON.parse(all_settings);
+       var sweetElement = document.createElement('form');
+       var key = "ProjectorLEDCurrent";
+       sweetElement.setAttribute('action',"/projector/change_value");
+       sweetElement.setAttribute('class',"max-width center-block border");
+       sweetElement.innerHTML = "<button type=\"submit\" class=\"btn btn-primary\">Projector ON</button><label>&nbsp;with ProjectorLEDCurrent:&nbsp;</label> <input type=hidden name=setting value=" + key + "> <input type=number step=0.01 name=value value=" + obj[key] + "></form>";
+       document.getElementById("settings").appendChild(sweetElement);
+      </script>
+      <form class="max-width center-block border" action="/projector/off" method="get" enctype="multipart/form-data">
+        <button type="submit" class="btn btn-primary">Projector OFF</button>
+        <label>Turn the projector off</label>
+      </form>
+      <form class="max-width center-block border" action="/projector/testpattern" method="get" enctype="multipart/form-data">
+        <button type="submit" class="btn btn-primary">Test Pattern</button>
+        <label>Project a test pattern</label>
+      </form>
+</div>
